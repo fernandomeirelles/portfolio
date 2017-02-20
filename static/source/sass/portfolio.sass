@@ -9,6 +9,12 @@ $colorPurpleTertiary: #EA80FC
 $colorBlackPrimary: #333
 $colorBlackSecondary: #666
 
+@mixin imgRetina($image, $extension, $width, $height, $position: center, $repeat: no-repeat)
+	background: url($image + '.' + $extension) $repeat $position
+	@media screen and (-webkit-min-device-pixel-ratio: 2),	screen and (min--moz-device-pixel-ratio: 2), screen and (-moz-min-device-pixel-ratio: 2), screen and (-o-min-device-pixel-ratio: 2/1), screen and (min-device-pixel-ratio: 2), screen and (min-resolution: 192dpi), screen and (min-resolution: 2dppx)
+		background: url($image + '@2x' + '.' + $extension) $repeat $position
+		background-size: $width $height
+
 .portfolio
 	font-family: 'Lato', sans-serif
 	.cursive
@@ -74,6 +80,13 @@ $colorBlackSecondary: #666
 			&:last-of-type
 				border-bottom: none
 				margin-bottom: 0
+		.image-peixeurbano-destaque
+			display: block
+			@include imgRetina("../images/peixe_urbano/destaque", png, 582px, 454px, no-repeat, center)
+			width: 582px
+			height: 454px
+			float: right
+
 
 @media (min-width: 576px)
 	.portfolio
